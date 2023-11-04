@@ -1,0 +1,16 @@
+{
+  "id": "content_block_mittel1_a",
+  "type": "SharedSlice",
+  "name": "ContentBlockMittel1A",
+  "description": "ContentBlockMittel1A",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}

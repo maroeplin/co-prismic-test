@@ -157,6 +157,36 @@ export type SettingsDocument<Lang extends string = string> =
 
 export type AllDocumentTypes = HomeDocument | SettingsDocument;
 
+/**
+ * Default variation for ContentBlockMittel1A Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentBlockMittel1ASliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *ContentBlockMittel1A*
+ */
+type ContentBlockMittel1ASliceVariation = ContentBlockMittel1ASliceDefault;
+
+/**
+ * ContentBlockMittel1A Shared Slice
+ *
+ * - **API ID**: `content_block_mittel1_a`
+ * - **Description**: ContentBlockMittel1A
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentBlockMittel1ASlice = prismic.SharedSlice<
+  "content_block_mittel1_a",
+  ContentBlockMittel1ASliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -174,6 +204,9 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
       AllDocumentTypes,
+      ContentBlockMittel1ASlice,
+      ContentBlockMittel1ASliceVariation,
+      ContentBlockMittel1ASliceDefault,
     };
   }
 }
