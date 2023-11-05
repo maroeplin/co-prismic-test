@@ -12,18 +12,20 @@ const nunito = Nunito({ subsets: ['latin'], display: 'swap', variable: '--font-n
 import { createClient } from '@/prismicio'
 import { create } from 'domain'
 
+import Header from '@/components/Header'
+
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
 
   try {
-    const page = await client.getSingle("settings");
+    const settings = await client.getSingle("settings");
     
-    if (page) {
+    if (settings) {
       return {
-        title: page.data.site_title || "C/O Vienna",
-        description: page.data.meta_description || "C/O Vienna Meta Description",
+        title: settings.data.site_title || "C/O Vienna",
+        description: settings.data.meta_description || "C/O Vienna Meta Description",
         openGraph: {
-          images: [page.data.og_image.url || ""],
+          images: [settings.data.og_image.url || ""],
         },
       };
     } else {
@@ -53,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="de" className={clsx(inter.variable, nunito.variable)}>
       <body>
-      <header>Header</header>
+      <Header />
       {children}
       <footer>Footer</footer>
       </body>

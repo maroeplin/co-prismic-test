@@ -1,0 +1,26 @@
+{
+  "id": "headline_h2",
+  "type": "SharedSlice",
+  "name": "HeadlineH2",
+  "description": "HeadlineH2",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "headline": {
+          "type": "Text",
+          "config": {
+            "label": "headline",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

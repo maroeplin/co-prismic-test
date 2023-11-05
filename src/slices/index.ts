@@ -3,5 +3,8 @@
 import dynamic from "next/dynamic";
 
 export const components = {
-  content_block_mittel1_a: dynamic(() => import("./ContentBlockMittel1A")),
+  headline_h2: dynamic(() => import("./HeadlineH2")),
+  hero: dynamic(() => import("./Hero")),
+  interview: dynamic(() => import("./Interview")),
+  quote: dynamic(() => import("./Quote")),
 };

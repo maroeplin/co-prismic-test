@@ -9,14 +9,14 @@
       "site_title": {
         "type": "Text",
         "config": {
-          "label": "Seitentitel",
+          "label": "Site Title",
           "placeholder": ""
         }
       },
       "meta_description": {
         "type": "Text",
         "config": {
-          "label": "Meta Beschreibung",
+          "label": "Meta Description",
           "placeholder": ""
         }
       },

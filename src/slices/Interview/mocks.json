@@ -1,0 +1,42 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"question",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Cillum adipisicing nostrud ad sit aliquip laborum excepteur et eiusmod do nulla laborum consequat ullamco qui."
+									}
+								}
+							]
+						}
+					],
+					[
+						"answer",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Esse est nisi ea ad. Anim adipisicing aute reprehenderit. Amet nisi voluptate ad do anim esse."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
+	}
+]

@@ -1,16 +1,35 @@
 {
-  "id": "home",
-  "label": "Home",
+  "id": "interview",
+  "label": "Interview",
   "format": "page",
-  "repeatable": false,
+  "repeatable": true,
   "status": true,
   "json": {
     "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "hero": {
+              "type": "SharedSlice"
+            },
+            "interview": {
+              "type": "SharedSlice"
+            },
+            "quote": {
+              "type": "SharedSlice"
+            },
+            "headline_h2": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },

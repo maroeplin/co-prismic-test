@@ -1,8 +1,8 @@
 {
-  "id": "content_block_mittel1_a",
+  "id": "quote",
   "type": "SharedSlice",
-  "name": "ContentBlockMittel1A",
-  "description": "ContentBlockMittel1A",
+  "name": "Quote",
+  "description": "Quote",
   "variations": [
     {
       "id": "default",

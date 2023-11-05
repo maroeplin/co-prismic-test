@@ -4,49 +4,53 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = never;
+type InterviewDocumentDataSlicesSlice =
+  | HeroSlice
+  | InterviewSlice
+  | QuoteSlice
+  | HeadlineH2Slice;
 
 /**
- * Content for Home documents
+ * Content for Interview documents
  */
-interface HomeDocumentData {
+interface InterviewDocumentData {
   /**
-   * Slice Zone field in *Home*
+   * Slice Zone field in *Interview*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
-   * - **API ID Path**: home.slices[]
+   * - **API ID Path**: interview.slices[]
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice> /**
-   * Meta Description field in *Home*
+  slices: prismic.SliceZone<InterviewDocumentDataSlicesSlice> /**
+   * Meta Description field in *Interview*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: home.meta_description
+   * - **API ID Path**: interview.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */;
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Home*
+   * Meta Image field in *Interview*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: home.meta_image
+   * - **API ID Path**: interview.meta_image
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   meta_image: prismic.ImageField<never>;
 
   /**
-   * Meta Title field in *Home*
+   * Meta Title field in *Interview*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: home.meta_title
+   * - **API ID Path**: interview.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
@@ -54,16 +58,20 @@ interface HomeDocumentData {
 }
 
 /**
- * Home document from Prismic
+ * Interview document from Prismic
  *
- * - **API ID**: `home`
- * - **Repeatable**: `false`
+ * - **API ID**: `interview`
+ * - **Repeatable**: `true`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type HomeDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+export type InterviewDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<InterviewDocumentData>,
+    "interview",
+    Lang
+  >;
 
 /**
  * Item in *Settings → Navigation*
@@ -95,7 +103,7 @@ export interface SettingsDocumentDataNavigationItem {
  */
 interface SettingsDocumentData {
   /**
-   * Seitentitel field in *Settings*
+   * Site Title field in *Settings*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -106,7 +114,7 @@ interface SettingsDocumentData {
   site_title: prismic.KeyTextField;
 
   /**
-   * Meta Beschreibung field in *Settings*
+   * Meta Description field in *Settings*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -155,37 +163,176 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomeDocument | SettingsDocument;
+export type AllDocumentTypes = InterviewDocument | SettingsDocument;
 
 /**
- * Default variation for ContentBlockMittel1A Slice
+ * Primary content in *HeadlineH2 → Primary*
+ */
+export interface HeadlineH2SliceDefaultPrimary {
+  /**
+   * headline field in *HeadlineH2 → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: headline_h2.primary.headline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  headline: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for HeadlineH2 Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ContentBlockMittel1ASliceDefault = prismic.SharedSliceVariation<
+export type HeadlineH2SliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HeadlineH2SliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HeadlineH2*
+ */
+type HeadlineH2SliceVariation = HeadlineH2SliceDefault;
+
+/**
+ * HeadlineH2 Shared Slice
+ *
+ * - **API ID**: `headline_h2`
+ * - **Description**: HeadlineH2
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeadlineH2Slice = prismic.SharedSlice<
+  "headline_h2",
+  HeadlineH2SliceVariation
+>;
+
+/**
+ * Primary content in *Hero → Primary*
+ */
+export interface HeroSliceDefaultPrimary {
+  /**
+   * Bild field in *Hero → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Hero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Hero*
+ */
+type HeroSliceVariation = HeroSliceDefault;
+
+/**
+ * Hero Shared Slice
+ *
+ * - **API ID**: `hero`
+ * - **Description**: Hero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
+
+/**
+ * Primary content in *Interview → Items*
+ */
+export interface InterviewSliceDefaultItem {
+  /**
+   * Frage field in *Interview → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: interview.items[].question
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  question: prismic.RichTextField;
+
+  /**
+   * Antwort field in *Interview → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: interview.items[].answer
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  answer: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Interview Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InterviewSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<InterviewSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Interview*
+ */
+type InterviewSliceVariation = InterviewSliceDefault;
+
+/**
+ * Interview Shared Slice
+ *
+ * - **API ID**: `interview`
+ * - **Description**: Interview
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InterviewSlice = prismic.SharedSlice<
+  "interview",
+  InterviewSliceVariation
+>;
+
+/**
+ * Default variation for Quote Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type QuoteSliceDefault = prismic.SharedSliceVariation<
   "default",
   Record<string, never>,
   never
 >;
 
 /**
- * Slice variation for *ContentBlockMittel1A*
+ * Slice variation for *Quote*
  */
-type ContentBlockMittel1ASliceVariation = ContentBlockMittel1ASliceDefault;
+type QuoteSliceVariation = QuoteSliceDefault;
 
 /**
- * ContentBlockMittel1A Shared Slice
+ * Quote Shared Slice
  *
- * - **API ID**: `content_block_mittel1_a`
- * - **Description**: ContentBlockMittel1A
+ * - **API ID**: `quote`
+ * - **Description**: Quote
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ContentBlockMittel1ASlice = prismic.SharedSlice<
-  "content_block_mittel1_a",
-  ContentBlockMittel1ASliceVariation
->;
+export type QuoteSlice = prismic.SharedSlice<"quote", QuoteSliceVariation>;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -197,16 +344,28 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
-      HomeDocument,
-      HomeDocumentData,
-      HomeDocumentDataSlicesSlice,
+      InterviewDocument,
+      InterviewDocumentData,
+      InterviewDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
       AllDocumentTypes,
-      ContentBlockMittel1ASlice,
-      ContentBlockMittel1ASliceVariation,
-      ContentBlockMittel1ASliceDefault,
+      HeadlineH2Slice,
+      HeadlineH2SliceDefaultPrimary,
+      HeadlineH2SliceVariation,
+      HeadlineH2SliceDefault,
+      HeroSlice,
+      HeroSliceDefaultPrimary,
+      HeroSliceVariation,
+      HeroSliceDefault,
+      InterviewSlice,
+      InterviewSliceDefaultItem,
+      InterviewSliceVariation,
+      InterviewSliceDefault,
+      QuoteSlice,
+      QuoteSliceVariation,
+      QuoteSliceDefault,
     };
   }
 }
