@@ -1,0 +1,28 @@
+{
+  "id": "text_block_long_read",
+  "type": "SharedSlice",
+  "name": "TextBlockLongRead",
+  "description": "TextBlockLongRead",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    },
+    {
+      "id": "v2",
+      "name": "V2",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    }
+  ]
+}

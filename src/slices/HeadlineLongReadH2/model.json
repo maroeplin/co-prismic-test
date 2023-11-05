@@ -1,0 +1,26 @@
+{
+  "id": "headline_long_read_h2",
+  "type": "SharedSlice",
+  "name": "HeadlineLongReadH2",
+  "description": "HeadlineLongReadH2",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "headline": {
+          "type": "Text",
+          "config": {
+            "label": "headline",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

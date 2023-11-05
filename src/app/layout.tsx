@@ -9,7 +9,8 @@ const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-int
 
 const nunito = Nunito({ subsets: ['latin'], display: 'swap', variable: '--font-nunito' })
 
-import { createClient } from '@/prismicio'
+import { createClient, repositoryName } from '@/prismicio'
+import { PrismicPreview } from '@prismicio/next'
 import { create } from 'domain'
 
 import Header from '@/components/Header'
@@ -58,6 +59,7 @@ export default function RootLayout({
       <Header />
       {children}
       <footer>Footer</footer>
+      <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>
   )

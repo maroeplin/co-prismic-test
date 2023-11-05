@@ -4,6 +4,71 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type FotostoryStreckeDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Fotostory documents
+ */
+interface FotostoryStreckeDocumentData {
+  /**
+   * Slice Zone field in *Fotostory*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: fotostory_strecke.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<FotostoryStreckeDocumentDataSlicesSlice> /**
+   * Meta Description field in *Fotostory*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: fotostory_strecke.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Fotostory*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: fotostory_strecke.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Fotostory*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: fotostory_strecke.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Fotostory document from Prismic
+ *
+ * - **API ID**: `fotostory_strecke`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FotostoryStreckeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<FotostoryStreckeDocumentData>,
+    "fotostory_strecke",
+    Lang
+  >;
+
 type InterviewDocumentDataSlicesSlice =
   | HeroSlice
   | InterviewSlice
@@ -70,6 +135,138 @@ export type InterviewDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<
     Simplify<InterviewDocumentData>,
     "interview",
+    Lang
+  >;
+
+type LongReadArticleDocumentDataSlicesSlice =
+  | HeadlineLongReadH2Slice
+  | TextBlockLongReadSlice;
+
+/**
+ * Content for Long Read Article documents
+ */
+interface LongReadArticleDocumentData {
+  /**
+   * Slice Zone field in *Long Read Article*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: long_read_article.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<LongReadArticleDocumentDataSlicesSlice> /**
+   * Meta Description field in *Long Read Article*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: long_read_article.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Long Read Article*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: long_read_article.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Long Read Article*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: long_read_article.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Long Read Article document from Prismic
+ *
+ * - **API ID**: `long_read_article`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LongReadArticleDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<LongReadArticleDocumentData>,
+    "long_read_article",
+    Lang
+  >;
+
+type MeinungDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Meinung documents
+ */
+interface MeinungDocumentData {
+  /**
+   * Slice Zone field in *Meinung*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: meinung.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<MeinungDocumentDataSlicesSlice> /**
+   * Meta Description field in *Meinung*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: meinung.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Meinung*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: meinung.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Meinung*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: meinung.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Meinung document from Prismic
+ *
+ * - **API ID**: `meinung`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MeinungDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<MeinungDocumentData>,
+    "meinung",
     Lang
   >;
 
@@ -163,7 +360,74 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = InterviewDocument | SettingsDocument;
+type TippsDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Tipps documents
+ */
+interface TippsDocumentData {
+  /**
+   * Slice Zone field in *Tipps*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tipps.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<TippsDocumentDataSlicesSlice> /**
+   * Meta Description field in *Tipps*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: tipps.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Tipps*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tipps.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Tipps*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: tipps.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Tipps document from Prismic
+ *
+ * - **API ID**: `tipps`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TippsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<TippsDocumentData>, "tipps", Lang>;
+
+export type AllDocumentTypes =
+  | FotostoryStreckeDocument
+  | InterviewDocument
+  | LongReadArticleDocument
+  | MeinungDocument
+  | SettingsDocument
+  | TippsDocument;
 
 /**
  * Primary content in *HeadlineH2 → Primary*
@@ -208,6 +472,51 @@ type HeadlineH2SliceVariation = HeadlineH2SliceDefault;
 export type HeadlineH2Slice = prismic.SharedSlice<
   "headline_h2",
   HeadlineH2SliceVariation
+>;
+
+/**
+ * Primary content in *HeadlineLongReadH2 → Primary*
+ */
+export interface HeadlineLongReadH2SliceDefaultPrimary {
+  /**
+   * headline field in *HeadlineLongReadH2 → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: headline_long_read_h2.primary.headline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  headline: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for HeadlineLongReadH2 Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeadlineLongReadH2SliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HeadlineLongReadH2SliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HeadlineLongReadH2*
+ */
+type HeadlineLongReadH2SliceVariation = HeadlineLongReadH2SliceDefault;
+
+/**
+ * HeadlineLongReadH2 Shared Slice
+ *
+ * - **API ID**: `headline_long_read_h2`
+ * - **Description**: HeadlineLongReadH2
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeadlineLongReadH2Slice = prismic.SharedSlice<
+  "headline_long_read_h2",
+  HeadlineLongReadH2SliceVariation
 >;
 
 /**
@@ -334,6 +643,51 @@ type QuoteSliceVariation = QuoteSliceDefault;
  */
 export type QuoteSlice = prismic.SharedSlice<"quote", QuoteSliceVariation>;
 
+/**
+ * Default variation for TextBlockLongRead Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextBlockLongReadSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * V2 variation for TextBlockLongRead Slice
+ *
+ * - **API ID**: `v2`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextBlockLongReadSliceV2 = prismic.SharedSliceVariation<
+  "v2",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *TextBlockLongRead*
+ */
+type TextBlockLongReadSliceVariation =
+  | TextBlockLongReadSliceDefault
+  | TextBlockLongReadSliceV2;
+
+/**
+ * TextBlockLongRead Shared Slice
+ *
+ * - **API ID**: `text_block_long_read`
+ * - **Description**: TextBlockLongRead
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextBlockLongReadSlice = prismic.SharedSlice<
+  "text_block_long_read",
+  TextBlockLongReadSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -344,17 +698,33 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      FotostoryStreckeDocument,
+      FotostoryStreckeDocumentData,
+      FotostoryStreckeDocumentDataSlicesSlice,
       InterviewDocument,
       InterviewDocumentData,
       InterviewDocumentDataSlicesSlice,
+      LongReadArticleDocument,
+      LongReadArticleDocumentData,
+      LongReadArticleDocumentDataSlicesSlice,
+      MeinungDocument,
+      MeinungDocumentData,
+      MeinungDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
+      TippsDocument,
+      TippsDocumentData,
+      TippsDocumentDataSlicesSlice,
       AllDocumentTypes,
       HeadlineH2Slice,
       HeadlineH2SliceDefaultPrimary,
       HeadlineH2SliceVariation,
       HeadlineH2SliceDefault,
+      HeadlineLongReadH2Slice,
+      HeadlineLongReadH2SliceDefaultPrimary,
+      HeadlineLongReadH2SliceVariation,
+      HeadlineLongReadH2SliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
@@ -366,6 +736,10 @@ declare module "@prismicio/client" {
       QuoteSlice,
       QuoteSliceVariation,
       QuoteSliceDefault,
+      TextBlockLongReadSlice,
+      TextBlockLongReadSliceVariation,
+      TextBlockLongReadSliceDefault,
+      TextBlockLongReadSliceV2,
     };
   }
 }
